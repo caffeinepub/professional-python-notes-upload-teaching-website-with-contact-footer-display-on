@@ -1,0 +1,123 @@
+{
+  "kind": "build_request",
+  "title": "Add PDF Notes upload and viewing support",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Extend the backend note model and APIs to support two note types: (1) existing text/markdown notes and (2) PDF notes stored as binary data, while preserving existing capabilities (create, list, view, delete) for text notes.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "I want to add PDF Notes add that options"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes a way to upload a PDF note with a title and PDF bytes, and to fetch a PDF note’s bytes by title.",
+        "Existing text note upload/list/view/delete flows continue to work without breaking changes for text notes.",
+        "A note can be identified as either Text/Markdown or PDF when retrieved from the backend."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add conditional state migration for existing deployed canister state so that previously stored text notes remain accessible after introducing PDF note support.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "I want to add PDF Notes add that options"
+        ]
+      },
+      "acceptanceCriteria": [
+        "If the canister is upgraded from the current version, existing notes already stored are preserved and still appear in the notes list and detail view.",
+        "Migration is only introduced if required due to a persistent state type/schema change (per project migration policy)."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Update the notes upload UI to include an option to add a PDF note: allow selecting a local .pdf file, validate it, and upload it to the backend, while keeping the existing markdown/text upload option.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "I want to add PDF Notes add that options"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Upload page offers a clear choice between uploading a Text/Markdown note and uploading a PDF note.",
+        "PDF upload only accepts .pdf files and shows a user-friendly validation error if a non-PDF is selected or if no file is selected.",
+        "On successful PDF upload, user is redirected back to the notes list and sees a success toast/message.",
+        "Any new UI text is in English."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Update the notes list and note detail pages to handle PDF notes: in the list, indicate which notes are PDFs; in the detail view, provide an in-browser PDF viewer (or embedded preview) and a download option.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "I want to add PDF Notes add that options"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Notes list shows an explicit indicator (e.g., badge/label) for PDF notes vs text notes.",
+        "Opening a PDF note displays an embedded PDF preview (using browser-native PDF rendering) and provides a download button/link.",
+        "Opening a text note continues to display the existing text content view without regression."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Add/extend React Query hooks and frontend typing/bindings to support uploading and fetching PDF note content from the canister, and ensure caches are invalidated consistently with existing note operations.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "I want to add PDF Notes add that options"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Frontend has a dedicated mutation for uploading PDF notes and a query for fetching PDF bytes (or PDF note payload) by title.",
+        "After uploading or deleting a note (text or PDF), the notes list query is invalidated and reflects the latest state.",
+        "TypeScript types used by the frontend reflect the updated backend Note shape (including PDF vs text distinction)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (all logic in backend/main.mo).",
+    "Do not modify files under frontend/src/components/ui (compose them instead).",
+    "Do not modify frontend immutable hook/bootstrap files (frontend/src/hooks/useInternetIdentity.ts / .tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "No external services or external databases for storing PDFs.",
+    "User-facing text must be English."
+  ],
+  "nonGoals": [
+    "PDF text extraction/OCR/search inside PDFs.",
+    "External PDF hosting or CDN-style file serving.",
+    "Real-time collaboration or syncing."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

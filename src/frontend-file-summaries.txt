@@ -1,0 +1,13 @@
+{
+  "frontend/index.html": "Updated HTML document with PyNote Academy title and Google Fonts preconnect links for Inter and JetBrains Mono fonts.",
+  "frontend/src/index.css": "Global styles with warm neutral color palette using OKLCH, featuring forest green primary and amber secondary colors, avoiding blue/purple.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom fonts (Inter, JetBrains Mono), soft shadows, and consistent design tokens.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, ThemeProvider, and routes for Learn, Notes List, Note Detail, and Upload pages with shared header/footer layout.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for backend operations including separate mutations for text and PDF note uploads, queries for fetching notes and PDF content, and delete mutation with proper cache invalidation.",
+  "frontend/src/components/SiteHeader.tsx": "Responsive navigation header with logo, site name \"PyNote Academy\", and mobile-friendly menu using Sheet component.",
+  "frontend/src/components/SiteFooter.tsx": "Footer component displaying contact information (Kumar Anubhava, phone, Instagram, email) and Caffeine.ai attribution with UTM tracking.",
+  "frontend/src/pages/LearnPythonPage.tsx": "Landing page with hero section, logo/hero images, and tabbed Python learning content covering Basics, Data Types, Control Flow, and Functions.",
+  "frontend/src/pages/Notes/NotesListPage.tsx": "Notes listing page displaying all notes with PDF badges for PDF notes, properly handling the discriminated union type to show text previews for text notes and \"PDF document\" description for PDFs.",
+  "frontend/src/pages/Notes/NoteDetailPage.tsx": "Individual note detail page that renders text notes as formatted content and PDF notes as embedded browser-native previews with download functionality.",
+  "frontend/src/pages/Notes/UploadNotePage.tsx": "Note upload page with tabbed interface allowing users to choose between uploading text/markdown notes or PDF documents, with validation and file type checking for PDFs."
+}

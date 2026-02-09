@@ -1,2 +1,3 @@
-# professional-python-notes-upload-teaching-website-with-contact-footer-display-on
-Exported from Caffeine project: Professional Python notes upload + teaching website with contact footer (display-only)
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

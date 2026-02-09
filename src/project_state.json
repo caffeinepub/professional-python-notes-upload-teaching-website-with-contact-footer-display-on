@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Website project for uploading Python notes and teaching Python, with professional frontend + backend, a footer showing the owner's contact details, and support for adding notes as PDFs.",
+  "architectural_notes": [
+    "Email functionality scope: display contact email only; do not implement outbound email sending (newsletters/verification/notifications)."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-complete-professional-website-for-uploading-python-notes-and-teaching-python-including-both-frontend-ui-and-backend-canister-functionality",
+      "title": "Create a complete, professional website for uploading Python notes and teaching Python, including both frontend UI and backend canister functionality.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-notes-upload-workflow-that-supports-adding-python-notes-as-text-markdown-content-no-email-sending-no-external-services-including-create-list-view-and-delete-operations",
+      "title": "Implement a notes upload workflow that supports adding Python notes as text/markdown content (no email sending, no external services), including create, list, view, and delete operations.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-site-wide-footer-that-displays-the-owner-contact-details-exactly-as-provided-name-kumar-anubhava-mobile-9993225367-instagram-k-anubhavv-email-anubhavk939-gmail-com-display-only-do-not-send-emails",
+      "title": "Add a site-wide footer that displays the owner contact details exactly as provided: Name: \"Kumar Anubhava\", Mobile: \"9993225367\", Instagram: \"k.anubhavv\", Email: \"anubhavk939@gmail.com\" (display only; do not send emails).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-choose-a-site-name-branding-for-the-python-notes-teaching-website-and-apply-it-consistently-across-the-header-page-title-and-any-prominent-hero-landing-area",
+      "title": "Choose a site name/branding for the Python notes + teaching website and apply it consistently across the header, page title, and any prominent hero/landing area.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-coherent-professional-visual-theme-colors-typography-spacing-layout-appropriate-for-a-python-learning-notes-platform-and-apply-it-consistently-across-the-app-avoid-blue-purple-as-primary-brand-colors",
+      "title": "Create a coherent, professional visual theme (colors, typography, spacing, layout) appropriate for a Python learning + notes platform and apply it consistently across the app (avoid blue & purple as primary brand colors).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-public-learn-python-section-page-that-contains-structured-beginner-friendly-lesson-content-static-content-managed-in-the-frontend-and-clear-navigation-to-the-notes-area",
+      "title": "Add a public “Learn Python” section/page that contains structured beginner-friendly lesson content (static content managed in the frontend) and clear navigation to the notes area.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-use-simple-brand-assets-as-static-frontend-images-no-backend-image-serving-a-logo-and-a-hero-landing-illustration-consistent-with-the-chosen-theme",
+      "title": "Generate and use simple brand assets as static frontend images (no backend image serving): a logo and a hero/landing illustration consistent with the chosen theme.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-notes-upload-ui-to-include-an-option-to-add-a-pdf-note-allow-selecting-a-local-pdf-file-validate-it-and-upload-it-to-the-backend-while-keeping-the-existing-markdown-text-upload-option",
+      "title": "Update the notes upload UI to include an option to add a PDF note: allow selecting a local .pdf file, validate it, and upload it to the backend, while keeping the existing markdown/text upload option.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-notes-list-and-note-detail-pages-to-handle-pdf-notes-in-the-list-indicate-which-notes-are-pdfs-in-the-detail-view-provide-an-in-browser-pdf-viewer-or-embedded-preview-and-a-download-option",
+      "title": "Update the notes list and note detail pages to handle PDF notes: in the list, indicate which notes are PDFs; in the detail view, provide an in-browser PDF viewer (or embedded preview) and a download option.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-extend-react-query-hooks-and-frontend-typing-bindings-to-support-uploading-and-fetching-pdf-note-content-from-the-canister-and-ensure-caches-are-invalidated-consistently-with-existing-note-operations",
+      "title": "Add/extend React Query hooks and frontend typing/bindings to support uploading and fetching PDF note content from the canister, and ensure caches are invalidated consistently with existing note operations.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build a professional website for uploading Python notes and teaching Python (full frontend + backend).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Display footer contact details: Kumar Anubhava, phone 9993225367, Insta k.anubhavv, email anubhavk939@gmail.com (display only; no sending emails).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Decide and apply a site name/branding for the Python notes + teaching website.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add an option to upload/add PDF notes (PDF notes support in the notes workflow).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Extend the backend note model and APIs to support two note types: (1) existing text/markdown notes and (2) PDF notes stored as binary data, while preserving existing capabilities (create, list, view, delete) for text notes.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add conditional state migration for existing deployed canister state so that previously stored text notes remain accessible after introducing PDF note support.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Professional Python notes upload + teaching website with contact footer (display-only)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

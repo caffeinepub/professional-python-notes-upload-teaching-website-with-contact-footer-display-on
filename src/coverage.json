@@ -1,0 +1,96 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-09T17:16:40.611Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 5,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Update the notes upload UI to include an option to add a PDF note: allow selecting a local .pdf file, validate it, and upload it to the backend, while keeping the existing markdown/text upload option.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Notes/UploadNotePage.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Notes/UploadNotePage.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Update the notes list and note detail pages to handle PDF notes: in the list, indicate which notes are PDFs; in the detail view, provide an in-browser PDF viewer (or embedded preview) and a download option.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Notes/NotesListPage.tsx",
+          "frontend/src/pages/Notes/NoteDetailPage.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Notes/NotesListPage.tsx",
+          "frontend/src/pages/Notes/NoteDetailPage.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Add/extend React Query hooks and frontend typing/bindings to support uploading and fetching PDF note content from the canister, and ensure caches are invalidated consistently with existing note operations.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/Notes/UploadNotePage.tsx",
+          "frontend/src/pages/Notes/NoteDetailPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/Notes/UploadNotePage.tsx",
+          "frontend/src/pages/Notes/NoteDetailPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Extend the backend note model and APIs to support two note types: (1) existing text/markdown notes and (2) PDF notes stored as binary data, while preserving existing capabilities (create, list, view, delete) for text notes.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add conditional state migration for existing deployed canister state so that previously stored text notes remain accessible after introducing PDF note support.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/blob-storage/Mixin.mo",
+    "backend/blob-storage/Storage.mo",
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "build-template/README.md",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/Notes/NoteDetailPage.tsx",
+    "frontend/src/pages/Notes/NotesListPage.tsx",
+    "frontend/src/pages/Notes/UploadNotePage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

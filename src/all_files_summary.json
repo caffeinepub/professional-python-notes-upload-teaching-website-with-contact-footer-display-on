@@ -1,0 +1,22 @@
+{
+  "backend/main.mo": "Main canister logic for creating, storing, listing, viewing, deleting, and downloading text or PDF notes using a map-backed store.",
+  "backend/migration.mo": "Migration module converting old text-only notes into the new union type format by wrapping content as text.",
+  "feature_evidence.json": "Feature evidence report mapping UI and query changes to specific frontend files and components for PDF-note support.",
+  "frontend-file-summaries.txt": "Prewritten summaries describing the purpose of various frontend files related to notes, UI, and PDF support.",
+  "frontend/index.css": "Tailwind base styles and color tokens defining light/dark themes with custom OKLCH palette variables.",
+  "frontend/index.html": "Base HTML entry file setting title, fonts, and loading the React app root and main script.",
+  "frontend/src/App.tsx": "Root React component configuring TanStack Router, theme provider, and routes for learning and note pages.",
+  "frontend/src/components/SiteFooter.tsx": "Footer component showing contact details, navigation links, and caffeine.ai attribution.",
+  "frontend/src/components/SiteHeader.tsx": "Header with logo, desktop and mobile navigation, and route links for learning and notes pages.",
+  "frontend/src/hooks/useActor.ts": "React hook that creates and manages the authenticated or anonymous backend actor and invalidates dependent queries on changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides a React context and hooks for managing Internet Identity authentication, including login, logout, and identity persistence using AuthClient.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for fetching, uploading, downloading, and deleting notes through the backend actor API.",
+  "frontend/src/index.css": "Global Tailwind CSS configuration defining theme variables, dark mode styling, and component-level styles.",
+  "frontend/src/main.tsx": "Initializes the React app, setting up React Query and Internet Identity providers before rendering the root component.",
+  "frontend/src/pages/LearnPythonPage.tsx": "Renders a landing page for Python learning with hero content, navigation buttons, and tabbed introductory lessons.",
+  "frontend/src/pages/Notes/NoteDetailPage.tsx": "Displays a single note, supports PDF viewing and downloading, and provides deletion with confirmation and navigation.",
+  "frontend/src/pages/Notes/NotesListPage.tsx": "Shows a list of all notes with loading and error states, and includes actions to view, upload, or delete notes.",
+  "frontend/src/pages/Notes/UploadNotePage.tsx": "React page providing text and PDF note upload forms with validation, file handling, and submission via custom mutation hooks.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration defining theme extensions, colors, fonts, animations, and plugins.",
+  "project_state.json": "Project state metadata describing features, requirements, and architectural notes for the Python notes website."
+}

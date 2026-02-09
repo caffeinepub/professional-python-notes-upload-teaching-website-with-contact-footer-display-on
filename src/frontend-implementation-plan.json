@@ -1,0 +1,81 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add PDF note upload and viewing support (frontend)",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "summary": "Update upload UI to support both Text/Markdown notes and PDF notes with validation, upload, and success feedback.",
+      "acceptanceCriteria": [
+        "Upload page offers a clear choice between uploading a Text/Markdown note and uploading a PDF note.",
+        "PDF upload only accepts .pdf files and shows a user-friendly validation error if a non-PDF is selected or if no file is selected.",
+        "On successful PDF upload, user is redirected back to the notes list and sees a success toast/message.",
+        "Any new UI text is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Notes/UploadNotePage.tsx",
+          "operation": "modify",
+          "description": "Add a note-type selector (Text/Markdown vs PDF) and conditionally render either the existing markdown textarea or a PDF file picker. Validate title as before; for PDF mode validate a file is selected and its type/extension is .pdf, showing an English validation error when invalid. On submit, call the appropriate React Query mutation (text vs PDF) and keep the existing success toast + redirect to /notes. Use shadcn-ui components (e.g., Tabs/RadioGroup, Input, Alert, Button, Card) to implement the selector and form layout; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Expose a dedicated PDF upload mutation used by the upload page and keep (or refactor) the existing text upload flow so the upload UI can choose between them. Ensure both mutations invalidate the notes list cache on success. Use the blob-storage ExternalBlob class on the frontend to wrap selected PDF bytes for upload; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Update notes list and detail views to indicate PDF notes and to preview/download PDFs in-browser while preserving text note viewing.",
+      "acceptanceCriteria": [
+        "Notes list shows an explicit indicator (e.g., badge/label) for PDF notes vs text notes.",
+        "Opening a PDF note displays an embedded PDF preview (using browser-native PDF rendering) and provides a download button/link.",
+        "Opening a text note continues to display the existing text content view without regression."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Notes/NotesListPage.tsx",
+          "operation": "modify",
+          "description": "Update list rendering to handle the discriminated NoteType shape: show a clear 'PDF' indicator (badge/label) for notes whose content.__kind__ is 'pdf', and keep text preview snippets only for text notes (content.__kind__ === 'text'). For PDF notes, show a short description like 'PDF document' instead of substringing text content. Use shadcn-ui components (e.g., Badge if present, otherwise a small styled label using existing utility classes) without modifying files under frontend/src/components/ui; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/Notes/NoteDetailPage.tsx",
+          "operation": "modify",
+          "description": "Render note details based on content.__kind__: for text notes, keep the existing preformatted text view. For PDF notes, fetch the PDF blob via a React Query query and display an embedded preview using browser-native PDF rendering (e.g., iframe/object) sourced from the blob's direct URL, plus a Download button/link that downloads/opens the PDF. Use the blob-storage ExternalBlob methods (e.g., getDirectURL and/or getBytes for fallback download handling) to support preview/download; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a dedicated query hook for fetching a PDF note payload/blob by title to support the PDF detail view. Ensure delete operations invalidate both the notes list cache and any relevant note/PDF detail caches so switching between notes reflects the latest state. Use blob-storage ExternalBlob on the frontend for deriving direct URLs or bytes for preview/download; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Extend React Query hooks and TypeScript typing/bindings to support uploading and fetching PDF notes, with consistent cache invalidation.",
+      "acceptanceCriteria": [
+        "Frontend has a dedicated mutation for uploading PDF notes and a query for fetching PDF bytes (or PDF note payload) by title.",
+        "After uploading or deleting a note (text or PDF), the notes list query is invalidated and reflects the latest state.",
+        "TypeScript types used by the frontend reflect the updated backend Note shape (including PDF vs text distinction)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Align hooks with the updated backend interface/types: use createTextNote for text uploads, createPdfNote for PDF uploads, and downloadPdfNote for fetching PDF content by title. Update imports/types so Note and NoteType are treated as discriminated unions (text vs pdf) as defined in the generated frontend bindings. Ensure mutations invalidate ['notes'] and also invalidate/remove per-note caches like ['note', title] and ['pdf', title] where appropriate."
+        },
+        {
+          "path": "frontend/src/pages/Notes/UploadNotePage.tsx",
+          "operation": "modify",
+          "description": "Update the page to use the new dedicated React Query mutations (text vs PDF) and keep cache behavior consistent (post-upload list refresh). Implement PDF file reading (File -> ArrayBuffer -> Uint8Array) and wrap it with ExternalBlob.fromBytes before calling the PDF upload mutation. Use blob-storage ExternalBlob on the frontend for upload payloads; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/Notes/NoteDetailPage.tsx",
+          "operation": "modify",
+          "description": "Wire the new PDF query hook into the PDF note detail UI so PDF content is fetched lazily/conditionally only when viewing a PDF note, and ensure any derived preview URL/download flow uses the updated typings (NoteType discrimination)."
+        }
+      ]
+    }
+  ]
+}

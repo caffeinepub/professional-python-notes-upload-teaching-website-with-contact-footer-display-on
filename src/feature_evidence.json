@@ -1,0 +1,67 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-notes-upload-ui-to-include-an-option-to-add-a-pdf-note-allow-selecting-a-local-pdf-file-validate-it-and-upload-it-to-the-backend-while-keeping-the-existing-markdown-text-upload-option",
+      "featureTitle": "Update the notes upload UI to include an option to add a PDF note: allow selecting a local .pdf file, validate it, and upload it to the backend, while keeping the existing markdown/text upload option.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/Notes/UploadNotePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-notes-list-and-note-detail-pages-to-handle-pdf-notes-in-the-list-indicate-which-notes-are-pdfs-in-the-detail-view-provide-an-in-browser-pdf-viewer-or-embedded-preview-and-a-download-option",
+      "featureTitle": "Update the notes list and note detail pages to handle PDF notes: in the list, indicate which notes are PDFs; in the detail view, provide an in-browser PDF viewer (or embedded preview) and a download option.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/Notes/NoteDetailPage.tsx",
+        "frontend/src/pages/Notes/NotesListPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-extend-react-query-hooks-and-frontend-typing-bindings-to-support-uploading-and-fetching-pdf-note-content-from-the-canister-and-ensure-caches-are-invalidated-consistently-with-existing-note-operations",
+      "featureTitle": "Add/extend React Query hooks and frontend typing/bindings to support uploading and fetching PDF note content from the canister, and ensure caches are invalidated consistently with existing note operations.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/Notes/NoteDetailPage.tsx",
+        "frontend/src/pages/Notes/UploadNotePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
